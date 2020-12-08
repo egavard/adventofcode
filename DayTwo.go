@@ -22,14 +22,10 @@ func main() {
 		char = splitRule[1]
 		password = strings.Trim(splitPassword[1], " ")
 		fmt.Println("min:", min, "max:", max, "char:", char, "password:", password)
-		var charCount = 0
 		//Iterate on password chars to count our searched char
-		for index := range password {
-			if password[index] == char[0] {
-				charCount++
-			}
-		}
-		if charCount >= min && charCount <= max {
+		var firstPosition = password[min-1] == char[0]
+		var lastPosition = password[max-1] == char[0]
+		if firstPosition != lastPosition {
 			fmt.Println("valid")
 			totalValid++
 		}
